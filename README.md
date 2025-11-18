@@ -1,4 +1,7 @@
 # Cálculo Numérico 
+
+link com uma video aula: https://www.youtube.com/watch?v=AA3QNwHM41o
+
 # Método da Bissecção: Cálculo de Resistência em Circuito RLC 
 
 Este projeto implementa um algoritmo numérico em Python para solucionar um problema de engenharia elétrica referente a circuitos RLC transientes. O objetivo é determinar o valor exato de um resistor ($R$) necessário para dissipar uma carga específica em um determinado tempo, utilizando o **Método da Bissecção**.
