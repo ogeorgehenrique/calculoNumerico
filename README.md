@@ -1,81 +1,42 @@
-# Cálculo Numérico 
+# 📚 Métodos Numéricos Essenciais (Bissecção & Newton-Raphson)
 
-link com uma video aula: https://www.youtube.com/watch?v=AA3QNwHM41o
-
-# Método da Bissecção: Cálculo de Resistência em Circuito RLC 
-
-Este projeto implementa um algoritmo numérico em Python para solucionar um problema de engenharia elétrica referente a circuitos RLC transientes. O objetivo é determinar o valor exato de um resistor ($R$) necessário para dissipar uma carga específica em um determinado tempo, utilizando o **Método da Bissecção**.
-
-## 📄 Descrição do Problema
-
-O problema baseia-se no comportamento transiente de um circuito contendo um Resistor, um Indutor e um Capacitor (RLC) após o fechamento de uma chave. A variação da carga no capacitor em função do tempo é descrita pela seguinte equação diferencial linear de segunda ordem:
-
-$$q(t) = q_{0}e^{-Rt/(2L)}\cos\left[\left(\sqrt{\frac{1}{LC}-\left(\frac{R}{2L}\right)^{2}}\right)\cdot t\right]$$
-
-Onde:
-* **$q(t)$**: Carga no tempo $t$.
-* **$q_0$**: Carga inicial ($V_0C$).
-* **$R$**: Resistência (a variável desconhecida).
-* **$L$**: Indutância.
-* **$C$**: Capacitância.
-
-### Parâmetros do Projeto
-O objetivo é encontrar o valor de **$R$** tal que a carga seja dissipada para **1% do seu valor original** ($q/q_0 = 0.01$) no tempo $t = 0.05s$.
-
-Os valores utilizados na simulação são:
-* **Indutância ($L$):** $5$ H
-* **Capacitância ($C$):** $10^{-4}$ F
-* **Tempo alvo ($t$):** $0.05$ s
-* **Razão alvo ($q/q_0$):** $0.01$
+Este repositório contém a implementação em Python de dois algoritmos fundamentais de Cálculo Numérico utilizados para encontrar as raízes (zeros) de funções: o Método da Bissecção e o Método de Newton-Raphson.
 
 ---
 
-## 🧮 Metodologia Numérica
+## Estrutura do Repositório
 
-Para encontrar o valor de $R$, o problema foi modelado como uma busca de raízes (zeros) de uma função não linear $f(R) = 0$.
+O conteúdo deste repositório está organizado em duas pastas principais, cada uma dedicada a um método específico e contendo seus respectivos arquivos de código (`.py`) e documentação (como exemplos de uso ou relatórios):
 
-Utilizou-se o **Método da Bissecção** devido à sua robustez e garantia de convergência para funções contínuas em intervalos com troca de sinal. O método de Newton-Raphson foi descartado neste contexto devido à complexidade algébrica de derivar a equação de carga em relação a $R$.
-
-### Definição da Função $f(R)$
-Para aplicar o método numérico, a equação original foi manipulada para a forma $f(R) = 0$:
-
-$$f(R) = \left( e^{-Rt/(2L)}\cos\left[\left(\sqrt{\frac{1}{LC}-\left(\frac{R}{2L}\right)^{2}}\right)\cdot t\right] \right) - 0.01$$
-
-### Critérios de Parada
-O algoritmo encerra a busca quando uma das seguintes condições é atendida:
-1.  **Tolerância do Intervalo:** O erro estimado `(b - a) / 2` é menor que a tolerância definida.
-2.  **Raiz Exata:** O valor de $f(R)$ é exatamente $0$.
+| Pasta | Conteúdo Principal |
+| :--- | :--- |
+| **`01-Metodo_Bisseccao`** | Implementação do método de Bissecção. |
+| **`02-Metodo_Newton_Raphson`** | Implementação do método de Newton-Raphson. |
 
 ---
 
-## 🚀 Como Executar
+## Métodos Implementados (Breve Resumo)
 
-### Pré-requisitos
-* Python 3.x
-* Biblioteca padrão `math` (não é necessária instalação externa).
+### 1. Método da Bissecção
 
-### Passos
-1.  Clone este repositório:
-    ```bash
-    git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
-    ```
-2.  Navegue até a pasta do projeto e execute o script:
-    ```bash
-    python main.py
-    ```
-3.  O terminal exibirá o progresso das iterações, mostrando o estreitamento do intervalo até a convergência final.
+O Método da Bissecção é um **método fechado** que garante a convergência, desde que a raiz esteja cercada por um intervalo inicial $[a, b]$ onde a função $f(x)$ troca de sinal (Teorema de Bolzano).
+
+* **Princípio:** Reduz o intervalo de busca pela metade a cada iteração, garantindo que o erro máximo diminua linearmente.
+* **Vantagem:** Extrema robustez e garantia de sucesso.
+* **Desvantagem:** Lento.
+
+### 2. Método de Newton-Raphson
+
+O Método de Newton-Raphson é um **método aberto** que utiliza a derivada ($f'(x)$) para determinar a inclinação da reta tangente em um ponto, mirando diretamente na raiz.
+
+* **Princípio:** Usa a reta tangente para iterar o chute $x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}$.
+* **Vantagem:** Convergência quadrática (extremamente rápido, se convergente).
+* **Desvantagem:** Requer o cálculo da derivada e pode divergir se o chute inicial for ruim.
 
 ---
 
-## 🔍 Exemplo de Saída
+## Requisitos de Execução
 
-```text
-Iniciando Metodo da Bissecção para o circuito RLC
-=========================================
-Iteração 1
-Intervalo R: [0.000000, 400.000000]
-Ponto Médio (R): 200.000000
-...
---- RESULTADO FINAL ---
-O valor do resistor R é: 328.XXXXXX Ohms
-Valor da função na raiz: 0.000XXX
+Os algoritmos são implementados puramente em Python 3 e utilizam apenas bibliotecas padrão, como `math` (quando necessário para funções complexas).
+
+**Autor:** [George Henrique]
