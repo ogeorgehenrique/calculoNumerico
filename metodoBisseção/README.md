@@ -6,7 +6,7 @@ link com uma video aula: https://www.youtube.com/watch?v=AA3QNwHM41o
 
 Este projeto implementa um algoritmo numérico em Python para solucionar um problema de engenharia elétrica referente a circuitos RLC transientes. O objetivo é determinar o valor exato de um resistor ($R$) necessário para dissipar uma carga específica em um determinado tempo, utilizando o **Método da Bissecção**.
 
-## 📄 Descrição do Problema
+## Descrição do Problema
 
 O problema baseia-se no comportamento transiente de um circuito contendo um Resistor, um Indutor e um Capacitor (RLC) após o fechamento de uma chave. A variação da carga no capacitor em função do tempo é descrita pela seguinte equação diferencial linear de segunda ordem:
 
@@ -30,7 +30,7 @@ Os valores utilizados na simulação são:
 
 ---
 
-## 🧮 Metodologia Numérica
+## Metodologia Numérica
 
 Para encontrar o valor de $R$, o problema foi modelado como uma busca de raízes (zeros) de uma função não linear $f(R) = 0$.
 
@@ -48,7 +48,7 @@ O algoritmo encerra a busca quando uma das seguintes condições é atendida:
 
 ---
 
-## 🚀 Como Executar
+## Como Executar
 
 ### Pré-requisitos
 * Python 3.x
