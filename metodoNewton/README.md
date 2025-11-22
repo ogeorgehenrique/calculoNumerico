@@ -1,10 +1,12 @@
-## 🚀 Método de Newton-Raphson: Fundamentação e Implementação
+Video sobre o método: https://www.youtube.com/watch?v=l5NE-2k8T8Y
+
+## Método de Newton-Raphson: Fundamentação e Implementação
 
 O Método de Newton-Raphson é uma técnica iterativa de **método aberto** utilizada para encontrar aproximações das raízes (ou zeros) de uma função real ($f(x) = 0$). É reconhecido por sua **convergência quadrática**, o que o torna um dos métodos mais rápidos na área de cálculo numérico, desde que o chute inicial seja bem escolhido.
 
 ---
 
-### 1. 💡 Princípio Geométrico: A Reta Tangente
+### 1. Princípio Geométrico: A Reta Tangente
 
 A base do método reside na geometria:
 1.  Começamos com um chute inicial ($x_i$).
@@ -20,7 +22,7 @@ Essa aproximação linear (a reta tangente) nos guia rapidamente para a raiz.
 
 ---
 
-### 2. 📝 Fórmula de Iteração
+### 2. Fórmula de Iteração
 
 A fórmula é derivada da definição de inclinação ($f'(x)$), que é a derivada da função no ponto $x_i$.
 
@@ -32,7 +34,7 @@ O termo $\frac{f(x_i)}{f'(x_i)}$ representa o **ajuste horizontal** necessário 
 
 ---
 
-### 3. 🎯 Estrutura do Código
+### 3. Estrutura do Código
 
 O código implementado busca a raiz da função **$f(x) = x^2 - 2$** (cuja raiz positiva é $\sqrt{2}$).
 
@@ -51,3 +53,13 @@ O critério de parada implementado é:
 ```python
 if abs(x_novo - x_atual) < tolerancia:
     return x_novo
+
+```
+
+Isso garante que a mudança na estimativa (o erro estimado) seja menor que o erro máximo permitido, confirmando a convergência.
+
+### Considerações Importantes
+
+- Chute Inicial (x_0): O sucesso do Método de Newton-Raphson depende de um bom chute inicial. Um chute ruim pode levar à divergência ou à convergência para uma raiz diferente da desejada.
+- Derivada Zero: Se em algum ponto f′(x_i)=0, o método falha, pois a reta tangente é horizontal e não cruza o eixo X.
+- Vantagem: Sua convergência quadrática significa que o número de dígitos corretos na raiz se duplica aproximadamente a cada iteração, tornando-o extremamente eficiente.
